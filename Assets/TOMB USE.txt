@@ -1,0 +1,44 @@
+How to use the TOMB: 
+
+where actName = ["Tour", "BVW", "Class"]
+where groupName = ["Master", "allRGB", "center", "SL", "SL1", "SL2", "SR", 'SR1", "SR2", "UV", "MH", "Walls", "coffin", "3wall", "K", "K-F", "K-B"] 
+
+
+
+OSC string messages to the lighting controller
+	"/addr function data"		the string will be parsed based on " " so no function name or data can have a space within it
+
+	"/lighting operations blackout"	=> request all lights to be turned off 
+	"/lighting operations allOn"	=> request all RGB lights to be turned on and set to white
+	"/lighting operations theme"	=> request that the theme lighting for the cave be turned on
+	"/lighting color groupName r g b a d"	=> request that the lights in the group be set to the provided color
+	"/lighting colorAdd groupName r g b a d"	=> request that the lights in the group be set to the provided color => add to current channels 
+	"/lighting fade groupName r g b a d"	=> request that the lights in the group fade to the provided color over 1 second
+	"/lighting fadeAdd groupName r g b a d"	=> request that the lights in the group fade to the provided color over 1 second => add to current channels
+	"/lighting cue actName cueNumer"	=> request that the provided numbered cue within the provided act be executed
+	"/lighting move groupName pan tilt speed 0 0" => request that the moving head provided be moved to the provided location - speed of 30 works well
+	"/lighting show showNumber"	=> start the numbered show
+	
+
+SHOWs 
+	a list of strings using the same format as OSC messages:
+	"/addr function data"		the string will be parsed based on " " so no function name or data can have a space within it
+
+	"/lighting wait n.n"	=> wait a float amount of time before executing the next request 
+	"/comment text"		=> info that is useful to the creator but not to the code
+
+	NO empty strings may exist in the show 
+
+
+PRESET CUES - THESE SHOULD NEVER CHANGE
+	Act Tour 
+		Q1 = Faded Blackout
+		Q2 = allRGB set to white
+		Q3 = Theme lighting
+		Q4 = Kiosk lighting  
+
+	use "/lighting cue Tour 3"		=> turns on the theme lighting
+
+
+PRESET SHOWS - THESE SHOULD NEVER CHANGE
+	S1 = test show 

@@ -1,0 +1,61 @@
+Trigger "Start" when State = "preShow" 
+* setup lights
+* show start image 
+* play music 
+* change state to wait
+
+Trigger "Got-playMovie" when State = wait 
+* hide the start image 
+* stop the music 
+* change the lights 
+* start the video playing 
+* change state to "play"
+* trigger "Got-donePlayVideo" when movie is at its end
+
+Trigger "Got-donePlayVideo" when State = "play"
+* stop the video playing 
+* change the lights
+* change state to "preShow" 
+* trigger "Start" in 3 seconds
+
+
+Action start program -> Trigger "Start"
+Action step on floor -> Trigger "Got-playMovie" if in state "waiting"
+Action keyboard shortcut 1 -> Trigger "Got-playMovie" if in state "waiting"
+Action movie at end -> Trigger "Got-donePlayVideo" if in state "play"
+Action keyboard shortcut 2 -> Trigger "Got-donePlayVideo" if in state "play"
+Action leave timmer up -> Trigger "Start" if in state "preshow"
+
+Receive Phidget data when floor pads are stepped on -> Trigger "Got-playMovie" after 1 second
+
+
+Assests needed: 
+waiting music -  
+* place mp3 file in audio folder
+* on onject ExperienceController, drag audio asset to the AudioClip slot in the AudioSource component
+StartScreen - 
+* open file startScreen.png, found in the models/materials folder, in photoshop and make it look nice 
+* save it back out over the original file 
+EndScreen - 
+* open file endScreen.png, found in the models/materials folder, in photoshop and make it look nice 
+* save it back out over the original file 
+Video - 
+* create the video and render it as a mp4 
+* place it into the movies folder 
+* Select the PlaneMovie object, drag video asset to the VideoClip slot in the VideoPlayer component
+* save out the audio from the video as an mp3 file 
+* place it in the audio folder 
+* Select the ACE object, drag audio asset to the AudioClip slot in the AudioSource component
+Lighting - 
+* Select the ExperienceController object
+* In the Triggers component, set the group and color information for the three states of the project 
+Advanced Lighting - 
+* Select the ACE object
+* add Lighting Events to the audio in the same manor as was done for the Artisic Lighting project  
+
+
+DARK ACE:
+* If you cannot see the black frame line then close the window and re-open it
+* SHIFT/LEFT MOUSE - Creates an event 
+* ALT/LEFT MOUSE - Deleates the event the mouse is over 
+* Use Pause to stop playback because it keeps the black frame line from reseting to frame 0
