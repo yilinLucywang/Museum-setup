@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//https://www.youtube.com/watch?v=98dQBWUyy9M
 public class multipleTouch : MonoBehaviour
 {
 
