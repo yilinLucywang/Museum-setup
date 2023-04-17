@@ -7,8 +7,8 @@ public class Triggers : MonoBehaviour {
 
     public PlayMovie video;
     public Text statusFeedback;
-    public GameObject startScreen;
-    public GameObject endScreen;
+    // public GameObject startScreen;
+    // public GameObject endScreen;
     public AudioSource waitingMusic;
 
     [System.Serializable]
@@ -105,8 +105,8 @@ public class Triggers : MonoBehaviour {
                     // lighting - orange all walls    -- waiting light
                     osc.SendOSCMessage(BuildLightMessage("preShow"));  // preshow
                     // make sure start screen is visible
-                    startScreen.SetActive(true);
-                    endScreen.SetActive(false); // hide until needed
+                    //startScreen.SetActive(true);
+                    //endScreen.SetActive(false); // hide until needed
                     // playing waiting music
                     waitingMusic.Play();
                     // set the new state and update status
@@ -120,7 +120,7 @@ public class Triggers : MonoBehaviour {
                     state = "play";
                     status = "playing movie";
                     // hide the start screen
-                    startScreen.SetActive(false);
+                    //startScreen.SetActive(false);
                     // stop the waiting music
                     waitingMusic.Stop();
                     // start video playback
@@ -139,7 +139,7 @@ public class Triggers : MonoBehaviour {
                     // stop video playback - in case we jumpped into this state early
                     video.StopVideo();
                     // show the endScreen to have something to look at 
-                    endScreen.SetActive(true);
+                    //endScreen.SetActive(true);
                     // lighting - orange all walls      -- Guest leave lighting
                     osc.SendOSCMessage(BuildLightMessage("leave"));  // leave
                     // trigger wait so guest has time to leave
