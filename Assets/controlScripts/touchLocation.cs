@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class touchLocation
+public class touchLocation: MonoBehaviour
 {
     public int touchId; 
     public GameObject circle; 
