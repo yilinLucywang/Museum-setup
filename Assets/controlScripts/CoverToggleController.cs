@@ -4,22 +4,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ToggleController : MonoBehaviour
+public class CoverToggleController : MonoBehaviour
 {
-    public int sceneIndex = 1;
     public List<bool> toggles = new List<bool>();
-    //temporarily set to 1110
+    //temporarily set to 11
     public List<bool> answer = new List<bool>();
     public GameObject win; 
     public GameObject lose;
     void Awake(){
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 3; i++){
             toggles.Add(false);
         }
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < 2; i++){
             answer.Add(true);
         }
-        for(int i = 3; i < 4; i++){
+        for(int i = 2; i < 3; i++){
             answer.Add(false);
         }
     }
@@ -32,38 +31,37 @@ public class ToggleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(toggles[4]){
+        if(toggles[2]){
             bool isMatch = true;
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 2; i++){
                 if(toggles[i] != answer[i]){
-                    jumpToWrongAns();
+                    jumpToCWrongAns();
                     isMatch = false;
                     break;
                 }
             }
             if(isMatch){
-                jumpToRightAns();
+                jumpToCRightAns();
             }
 
         }
     }
 
-    public void getToggles(int idx){
+    public void getCToggles(int idx){
         toggles[idx] = true;
     }
 
-    public void lostToggles(int idx){
+    public void lostCToggles(int idx){
         toggles[idx] = false;
     }
 
-    public void jumpToWrongAns(){
+    public void jumpToCWrongAns(){
         win.SetActive(false);
         lose.SetActive(true);
     }
 
-    public void jumpToRightAns(){
+    public void jumpToCRightAns(){
         win.SetActive(true); 
         lose.SetActive(false); 
     }
-
 }

@@ -95,6 +95,7 @@ public class Triggers : MonoBehaviour {
     public void Trigger(string trigger) {
         Debug.Log("Handel trigger - " + trigger);
         ToggleController tc = gameObject.GetComponent<ToggleController>();
+        CoverToggleController ctc = gameObject.GetComponent<CoverToggleController>();
         switch (trigger) {
             ////////////////////// STATE CONTROL ///////////////////////////////////////////////
             case "Start":
@@ -330,32 +331,32 @@ public class Triggers : MonoBehaviour {
             case "Got-CoverToggle1":
                 // turn on LED feedback
                 LEDFeedback("CoverToggle1", ledON);
-
+                ctc.getCToggles(0);
                 break;
             case "Got-CoverToggle2":
                 // turn on LED feedback
                 LEDFeedback("CoverToggle2", ledON);
-
+                ctc.getCToggles(1);
                 break;
             case "Got-CoverToggle3":
                 // turn on LED feedback
                 LEDFeedback("CoverToggle3", ledON);
-
+                ctc.getCToggles(2);
                 break;
             case "Lost-CoverToggle1":
                 // turn off LED feedback
                 LEDFeedback("CoverToggle1", ledOFF);
-
+                ctc.lostCToggles(0);
                 break;
             case "Lost-CoverToggle2":
                 // turn off LED feedback
                 LEDFeedback("CoverToggle2", ledOFF);
-
+                ctc.lostCToggles(1);
                 break;
             case "Lost-CoverToggle3":
                 // turn off LED feedback
                 LEDFeedback("CoverToggle3", ledOFF);
-
+                ctc.lostCToggles(2);
                 break;
             case "Got-Key":
 
