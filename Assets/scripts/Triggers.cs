@@ -94,7 +94,7 @@ public class Triggers : MonoBehaviour {
 
     public void Trigger(string trigger) {
         Debug.Log("Handel trigger - " + trigger);
-
+        ToggleController tc = gameObject.GetComponent<ToggleController>();
         switch (trigger) {
             ////////////////////// STATE CONTROL ///////////////////////////////////////////////
             case "Start":
@@ -280,52 +280,52 @@ public class Triggers : MonoBehaviour {
             case "Got-Toggle1":
                 // turn on LED feedback
                 LEDFeedback("Toggle1", ledON);
-
+                tc.getToggles(0);
                 break;
             case "Got-Toggle2":
                 // turn on LED feedback
                 LEDFeedback("Toggle2", ledON);
-
+                tc.getToggles(1);
                 break;
             case "Got-Toggle3":
                 // turn on LED feedback
                 LEDFeedback("Toggle3", ledON);
-
+                tc.getToggles(2);
                 break;
             case "Got-Toggle4":
                 // turn on LED feedback
                 LEDFeedback("Toggle4", ledON);
-
+                tc.getToggles(3);
                 break;
             case "Got-Toggle5":
                 // turn on LED feedback
                 LEDFeedback("Toggle5", ledON);
-
+                tc.getToggles(4);
                 break;
             case "Lost-Toggle1":
                 // turn off LED feedback
                 LEDFeedback("Toggle1", ledOFF);
-
+                tc.lostToggles(0);
                 break;
             case "Lost-Toggle2":
                 // turn off LED feedback
                 LEDFeedback("Toggle2", ledOFF);
-
+                tc.lostToggles(1);
                 break;
             case "Lost-Toggle3":
                 // turn off LED feedback
                 LEDFeedback("Toggle3", ledOFF);
-
+                tc.lostToggles(2);
                 break;
             case "Lost-Toggle4":
                 // turn off LED feedback
                 LEDFeedback("Toggle4", ledOFF);
-
+                tc.lostToggles(3);
                 break;
             case "Lost-Toggle5":
                 // turn off LED feedback
                 LEDFeedback("Toggle5", ledOFF);
-
+                tc.lostToggles(4);
                 break;
             case "Got-CoverToggle1":
                 // turn on LED feedback
