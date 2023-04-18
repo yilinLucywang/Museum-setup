@@ -9,8 +9,8 @@ public class CoverToggleController : MonoBehaviour
     public List<bool> toggles = new List<bool>();
     //temporarily set to 11
     public List<bool> answer = new List<bool>();
-    public GameObject win; 
-    public GameObject lose;
+    public List<GameObject> tFails = new List<GameObject>();
+    public List<GameObject> tSuccesses = new List<GameObject>();public Text infos;
     void Awake(){
         for(int i = 0; i < 3; i++){
             toggles.Add(false);
@@ -49,19 +49,21 @@ public class CoverToggleController : MonoBehaviour
 
     public void getCToggles(int idx){
         toggles[idx] = true;
+        tSuccesses[idx].SetActive(true);
+        tFails[idx].SetActive(false);
     }
 
     public void lostCToggles(int idx){
         toggles[idx] = false;
+        tSuccesses[idx].SetActive(false);
+        tFails[idx].SetActive(true);
     }
 
     public void jumpToCWrongAns(){
-        win.SetActive(false);
-        lose.SetActive(true);
+        infos.text = "The answer is incorrect!";
     }
 
     public void jumpToCRightAns(){
-        win.SetActive(true); 
-        lose.SetActive(false); 
+        infos.text = "The answer is correct!"; 
     }
 }
