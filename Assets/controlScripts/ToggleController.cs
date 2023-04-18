@@ -12,7 +12,7 @@ public class ToggleController : MonoBehaviour
     public List<bool> toggles = new List<bool>();
     //temporarily set to 1110
     public List<bool> answer = new List<bool>();
-    public GameObject infos;
+    public Text infos;
     void Awake(){
         for(int i = 0; i < 5; i++){
             toggles.Add(false);
@@ -64,11 +64,13 @@ public class ToggleController : MonoBehaviour
     public void jumpToWrongAns(){
         //win.SetActive(false);
         //lose.SetActive(true);
+        infos.text = "The answer is incorrect!";
     }
 
     public void jumpToRightAns(){
         //win.SetActive(true); 
         //lose.SetActive(false); 
+        infos.text = "The answer is correct!";
     }
 
 }
