@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class ToggleController : MonoBehaviour
 {
     public int sceneIndex = 1;
+    public List<GameObject> tFails = new List<GameObject>();
+    public List<GameObject> tSuccesses = new List<GameObject>();
     public List<bool> toggles = new List<bool>();
     //temporarily set to 1110
     public List<bool> answer = new List<bool>();
-    public GameObject win; 
-    public GameObject lose;
+    public GameObject infos;
     void Awake(){
         for(int i = 0; i < 5; i++){
             toggles.Add(false);
@@ -50,20 +51,24 @@ public class ToggleController : MonoBehaviour
 
     public void getToggles(int idx){
         toggles[idx] = true;
+        tSuccesses[idx].SetActive(true);
+        tFails[idx].SetActive(false);
     }
 
     public void lostToggles(int idx){
         toggles[idx] = false;
+        tSuccesses[idx].SetActive(false);
+        tFails[idx].SetActive(true);
     }
 
     public void jumpToWrongAns(){
-        win.SetActive(false);
-        lose.SetActive(true);
+        //win.SetActive(false);
+        //lose.SetActive(true);
     }
 
     public void jumpToRightAns(){
-        win.SetActive(true); 
-        lose.SetActive(false); 
+        //win.SetActive(true); 
+        //lose.SetActive(false); 
     }
 
 }
