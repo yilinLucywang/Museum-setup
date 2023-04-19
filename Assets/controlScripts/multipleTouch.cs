@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //https://www.youtube.com/watch?v=98dQBWUyy9M
 public class multipleTouch : MonoBehaviour
@@ -9,11 +10,10 @@ public class multipleTouch : MonoBehaviour
     public GameObject circle; 
     public List<touchLocation> touches = new List<touchLocation>();
     public List<GameObject> targets = new List<GameObject>();
-    public GameObject win; 
-    public GameObject lose;
     private List<GameObject> circles = new List<GameObject>();
     private List<bool> matches = new List<bool>();
     private bool end = false; 
+    public Text infos;
     void Start(){
         for(int i = 0; i < 5; i++){
             matches.Add(false);
@@ -52,8 +52,8 @@ public class multipleTouch : MonoBehaviour
             }
             if(allMatch){
                 end = true;
-                win.SetActive(true);
-                lose.SetActive(false);
+                // win.SetActive(true);
+                // lose.SetActive(false);
             }
         }
     }

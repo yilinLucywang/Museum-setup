@@ -20,9 +20,16 @@ public class ToggleController : MonoBehaviour
         for(int i = 0; i < 3; i++){
             answer.Add(true);
         }
-        for(int i = 3; i < 4; i++){
+        for(int i = 3; i < 5; i++){
             answer.Add(false);
         }
+
+        for(int i = 0; i < 5; i++){
+            tSuccesses[i].SetActive(false);
+            tFails[i].SetActive(true);
+        }
+
+
     }
     // Start is called before the first frame update
     void Start()
