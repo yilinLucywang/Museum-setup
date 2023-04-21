@@ -13,6 +13,22 @@ public class RotationController : MonoBehaviour
     public int radius = 207;
     public bool pressed = false;
     public int ctr = 0; 
+
+    public GameObject fill; 
+
+
+
+    public float barValue = 0; 
+    public float decreaseRate = 0.02f;
+    public float increaeRate = 0.02f;
+
+    private Vector2 oriPos; 
+
+    private float prevAngle = 0; 
+    private float fullValue = 1f;
+    void Awake(){
+        oriPos = new Vector2(edge.transform.position.x, edge.transform.position.y);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +42,14 @@ public class RotationController : MonoBehaviour
         if(pressed){
             rotateObject(mousePosition);
         }
+        //decreases the value
+        if(barValue > 0){
+            barValue -= decreaseRate * Time.deltaTime;
+        }
 
+        //update the value of the bar 
+        float ratio = barValue/fullValue;
+        fill.transform.localScale = new Vector3(fill.transform.localScale.x, ratio, fill.transform.localScale.z);
     }
 
     public void OnClick(){
@@ -46,7 +69,30 @@ public class RotationController : MonoBehaviour
         diff.Normalize(); 
         Vector3 finalPos = centerPos + diff * radius;
         edge.transform.position = finalPos;
+
+        //vec2 (edge - center)
+        Vector2 rotVec = new Vector2((float)finalPos.x, (float)finalPos.y) - new Vector2(center.transform.position.x, center.transform.position.y);
+        //vec2 (ori - center)
+        Vector2 normVec = new Vector2((float)oriPos.x, (float)oriPos.y) - new Vector2(center.transform.position.x, center.transform.position.y);
+        //vec2 (ori - center)
+        //cross product get the angle between those two vectors
+            //1. if angle smaller, set value to 0
+            //2. if angle larger, increase the value
+        float angle = Vector2.Angle(normVec, rotVec);
+        if(angle < prevAngle){
+            barValue = 0f;
+        }
+        else{
+            float angleDiff = angle - prevAngle; 
+            barValue += increaeRate * angleDiff; 
+            prevAngle = angle; 
+        }
+
     }
 
+
+    private void decreaseBar(){
+
+    }
 
 }
