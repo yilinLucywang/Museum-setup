@@ -10,7 +10,7 @@ public class RotationController : MonoBehaviour
 {
     public GameObject edge;
     public GameObject center;
-    public int radius = 50;
+    public int radius = 207;
     public bool pressed = false;
     public int ctr = 0; 
     // Start is called before the first frame update

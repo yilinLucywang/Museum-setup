@@ -7,12 +7,13 @@ using UnityEngine.UI;
 public class ToggleController : MonoBehaviour
 {
     public int sceneIndex = 1;
-    public List<GameObject> tFails = new List<GameObject>();
-    public List<GameObject> tSuccesses = new List<GameObject>();
     public List<bool> toggles = new List<bool>();
     //temporarily set to 1110
     public List<bool> answer = new List<bool>();
     public Text infos;
+
+    public GameObject submitFalse; 
+    public GameObject submitSuccess;
     void Awake(){
         for(int i = 0; i < 5; i++){
             toggles.Add(false);
@@ -23,13 +24,6 @@ public class ToggleController : MonoBehaviour
         for(int i = 3; i < 5; i++){
             answer.Add(false);
         }
-
-        for(int i = 0; i < 5; i++){
-            tSuccesses[i].SetActive(false);
-            tFails[i].SetActive(true);
-        }
-
-
     }
     // Start is called before the first frame update
     void Start()
@@ -58,14 +52,10 @@ public class ToggleController : MonoBehaviour
 
     public void getToggles(int idx){
         toggles[idx] = true;
-        tSuccesses[idx].SetActive(true);
-        tFails[idx].SetActive(false);
     }
 
     public void lostToggles(int idx){
         toggles[idx] = false;
-        tSuccesses[idx].SetActive(false);
-        tFails[idx].SetActive(true);
     }
 
     public void jumpToWrongAns(){
