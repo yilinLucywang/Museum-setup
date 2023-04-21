@@ -14,6 +14,16 @@ public class multipleTouch : MonoBehaviour
     private List<bool> matches = new List<bool>();
     private bool end = false; 
     public Text infos;
+    private List<int> anses = new List<int>();
+    private List<bool> correctStatus = new List<bool>();
+    void Awake(){
+        anses.Add(2); 
+        anses.Add(4); 
+        anses.Add(3); 
+        for(int i = 0; i < 3; i++){
+            correctStatus.Add(false);
+        }
+    }
     void Start(){
         for(int i = 0; i < 5; i++){
             matches.Add(false);
@@ -44,17 +54,13 @@ public class multipleTouch : MonoBehaviour
                 ++i;
             }
             checkPos();
-            bool allMatch = true;
+            int matchCnt = 0;
             for(int j = 0; j < matches.Count; j++){
-                if(!matches[j]){
-                    allMatch = false;
+                if(matches[j]){
+                    matchCnt += 1;
                 }
             }
-            if(allMatch){
-                end = true;
-                // win.SetActive(true);
-                // lose.SetActive(false);
-            }
+            
         }
     }
 
@@ -66,8 +72,19 @@ public class multipleTouch : MonoBehaviour
                 }
             }
         }
-
     }
+
+
+    public void mtKnife(int index){
+        if(touches.Count == anses[index]){
+            correctStatus[index] = true;
+        }
+        else{
+            correctStatus[index] = false; 
+        }
+    }
+
+
     Vector2 getTouchPosition(Vector2 touchPosition){
         return GetComponent<Camera>().ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, 0f));
     }

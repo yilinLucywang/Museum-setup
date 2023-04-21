@@ -97,6 +97,7 @@ public class Triggers : MonoBehaviour {
         ToggleController tc = gameObject.GetComponent<ToggleController>();
         //CoverToggleController ctc = gameObject.GetComponent<CoverToggleController>();
         RotationController rc = gameObject.GetComponent<RotationController>();
+        multipleTouch mt = gameObject.GetComponent<multipleTouch>();
         switch (trigger) {
             ////////////////////// STATE CONTROL ///////////////////////////////////////////////
             case "Start":
@@ -368,22 +369,22 @@ public class Triggers : MonoBehaviour {
             case "Got-AlClip1":
                 // turn on LED feedback
                 LEDFeedback("AlClip1", ledON);
-
+                mt.mtKnife(0);
                 break;
             case "Got-AlClip2":
                 // turn on LED feedback
                 LEDFeedback("AlClip2", ledON);
-
+                mt.mtKnife(1);
                 break;
             case "Got-AlClip3":
                 // turn on LED feedback
                 LEDFeedback("AlClip3", ledON);
-
+                mt.mtKnife(2);
                 break;
             case "Got-AlClip4":
                 // turn on LED feedback
                 LEDFeedback("AlClip4", ledON);
-
+                mt.mtKnife(3);
                 break;
             case "Lost-AlClip1":
                 // turn off LED feedback
