@@ -26,8 +26,21 @@ public class RotationController : MonoBehaviour
 
     private float prevAngle = 0; 
     private float fullValue = 1f;
+
+
+    private List<float> ansValue = new List<float>();
+    public List<bool> passStatus = new List<bool>();
+    private List<bool> scoringStatus = new List<bool>();
+    private bool gameEnd = false; 
     void Awake(){
         oriPos = new Vector2(edge.transform.position.x, edge.transform.position.y);
+        ansValue.Add(0.25f);
+        ansValue.Add(0.50f); 
+        ansValue.Add(0.75f);
+
+        for(int i = 0; i < 3; i++){
+            passStatus.Add(false);
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -50,6 +63,17 @@ public class RotationController : MonoBehaviour
         //update the value of the bar 
         float ratio = barValue/fullValue;
         fill.transform.localScale = new Vector3(fill.transform.localScale.x, ratio, fill.transform.localScale.z);
+        
+        int ctr = 0; 
+        for(int i = 0; i < 3; i++){
+            if(passStatus[i]){
+                ctr += 1;
+            }
+        }
+        if(ctr == 3){
+            gameEnd = true; 
+        }
+
     }
 
     public void OnClick(){
@@ -81,6 +105,7 @@ public class RotationController : MonoBehaviour
         float angle = Vector2.Angle(normVec, rotVec);
         if(angle < prevAngle){
             barValue = 0f;
+            prevAngle = angle;
         }
         else{
             float angleDiff = angle - prevAngle; 
@@ -91,8 +116,18 @@ public class RotationController : MonoBehaviour
     }
 
 
-    private void decreaseBar(){
-
+    public void getCToggles(int index){
+        if(passStatus[index] == false){
+            passStatus[index] = true;
+            if(barValue >= ansValue[index]){
+                scoringStatus[index] = true;
+            }
+            else{
+                scoringStatus[index] = false; 
+            }
+        }
     }
 
+    public void lostCToggles(int index){
+    }
 }
