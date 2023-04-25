@@ -15,13 +15,20 @@ public class multipleTouch : MonoBehaviour
     private bool end = false; 
     public Text infos;
     private List<int> anses = new List<int>();
-    private List<bool> correctStatus = new List<bool>();
+    private List<bool> ClipStatus = new List<bool>();
+    private List<bool> KnifeStatus = new List<bool>();
+    private bool correct1 = false;
+    private bool correct2 = false;
+    private bool correct3 = false;
     void Awake(){
+        anses.Add(1); 
         anses.Add(2); 
-        anses.Add(4); 
-        anses.Add(3); 
+        anses.Add(5); 
         for(int i = 0; i < 3; i++){
-            correctStatus.Add(false);
+            ClipStatus.Add(false);
+        }
+        for(int i = 0; i < 3; i++){
+            KnifeStatus.Add(false);
         }
     }
     void Start(){
@@ -54,10 +61,33 @@ public class multipleTouch : MonoBehaviour
                 ++i;
             }
             checkPos();
-            int matchCnt = 0;
-            for(int j = 0; j < matches.Count; j++){
-                if(matches[j]){
-                    matchCnt += 1;
+
+            if(KnifeStatus[0]){
+                if(matches[3]){
+                    if(ClipStatus[0] and ClipStatus[2]){
+                        correct1 = true;
+                    }
+                }
+            }
+            else if(KnifeStatus[1]){
+                if(matches[1] and matches[3]){
+                    if((ClipStatus[0] and ClipStatus[1]) and (ClipStatus[2] and ClipStatus[3])){
+                        correct2 = true;
+                    }
+                }
+
+            } 
+            else if(KnifeStatus[2]){
+                int cnt = 0;
+                for(int i = 0; i < matches.Count; i++){
+                    if(matches[i]){
+                        cnt += 1;
+                    }
+                }
+                if(cnt == 5){
+                    if(ClipStatus[0] and ClipStatus[3]){
+                        correct3 = true;
+                    }
                 }
             }
             
@@ -75,14 +105,24 @@ public class multipleTouch : MonoBehaviour
     }
 
 
-    public void mtKnife(int index){
-        if(touches.Count == anses[index]){
-            correctStatus[index] = true;
-        }
-        else{
-            correctStatus[index] = false; 
-        }
+    public void mtClip(int index){
+        ClipStatus[index] = true;
     }
+
+    public void mtClipLose(int index){
+        ClipStatus[index] = false;
+    }
+
+
+    public void mtKnife(int index){
+        KnifeStatus[index] = true;
+    }
+
+    public void mtKnifeLose(int index){
+        KnifeStatus[index] = false;
+    }
+
+
 
 
     Vector2 getTouchPosition(Vector2 touchPosition){
