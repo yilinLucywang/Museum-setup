@@ -51,7 +51,7 @@ public class RotationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePosition = Input.mousePosition;;
+        Vector3 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition.x,Input.mousePosition.x.y,Input.mousePosition.x.z);
         if(pressed){
             rotateObject(mousePosition);
         }
