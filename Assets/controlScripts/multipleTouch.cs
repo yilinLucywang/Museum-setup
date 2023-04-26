@@ -69,39 +69,6 @@ public class multipleTouch : MonoBehaviour
                 ++i;
             }
             checkPos();
-
-            if(KnifeStatus[0]){
-                if(matches[3]){
-                    if((ClipStatus[0]) && (ClipStatus[2])){
-                        correct1 = true;
-                        //Debug.Log("correct1 correct");
-                        infos.text = "correct1 correct";
-                    }
-                }
-            }
-            else if(KnifeStatus[1]){
-                if(matches[1] && matches[3]){
-                    if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
-                        correct2 = true;
-                        infos.text = "correct2 correct";
-                    }
-                }
-
-            } 
-            else if(KnifeStatus[2]){
-                int cnt = 0;
-                for(int j = 0; j < matches.Count; j++){
-                    if(matches[j]){
-                        cnt += 1;
-                    }
-                }
-                if(cnt == 5){
-                    if(ClipStatus[0] && ClipStatus[3]){
-                        correct3 = true;
-                        infos.text = "correct3 correct";
-                    }
-                }
-            }
             
         }
     }
@@ -132,6 +99,25 @@ public class multipleTouch : MonoBehaviour
 
     public void mtKnife(int index){
         KnifeStatus[index] = true;
+        if(index == 0){
+            if((ClipStatus[0]) && (ClipStatus[2])){
+                correct1 = true;
+                //Debug.Log("correct1 correct");
+                infos.text = "correct1 correct";
+            }
+        }
+        else if(index == 1){
+            if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
+                correct2 = true;
+                infos.text = "correct2 correct";
+            }
+        }
+        else if(index == 2){
+            if(ClipStatus[0] && ClipStatus[3]){
+                correct3 = true;
+                infos.text = "correct3 correct";
+            }
+        }
     }
 
     public void mtKnifeLose(int index){
