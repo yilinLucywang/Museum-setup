@@ -16,7 +16,9 @@ public class RotationController : MonoBehaviour
     public Camera camera;
 
     public GameObject fill; 
-
+    public Text infobox1;
+    public Text infobox2;
+    public Text infobox3;
 
 
     public float barValue = 0; 
@@ -130,5 +132,36 @@ public class RotationController : MonoBehaviour
     }
 
     public void lostCToggles(int index){
+    }
+
+
+    public void submit1(){
+        if(barValue >= ansValue[0]){
+            scoringStatus[0] = true;
+            infobox1.text = "sublevel one correct";
+        }
+        else{
+            infobox1.text = "sublevel one incorrect";
+        }
+    }
+
+    public void submit2(){
+        if(barValue >= ansValue[1]){
+            scoringStatus[1] = true;
+            infobox2.text = "sublevel two correct";
+        }
+        else{
+            infobox2.text = "sublevel two incorrect";
+        }
+    }
+
+    public void submit3(){
+        if(barValue >= ansValue[2]){
+            scoringStatus[2] = true;
+            infobox3.text = "sublevel three correct";
+        }
+        else{
+            infobox3.text = "sublevel three incorrect";
+        }
     }
 }
