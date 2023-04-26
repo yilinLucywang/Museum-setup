@@ -145,6 +145,7 @@ public class multipleTouch : MonoBehaviour
         //Debug.Log(t.position);
         //c.transform.parent = canvas.transform;
         c.transform.position = getTouchPosition(t.position); 
+        c.transform.position = new Vector3(c.transform.position.x, c.transform.position.y, 30.0f);
         Debug.Log(c.transform.position); 
         circles.Add(c);
         return c;
