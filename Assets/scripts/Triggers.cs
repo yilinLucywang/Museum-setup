@@ -7,10 +7,15 @@ public class Triggers : MonoBehaviour {
 
     public PlayMovie video;
     public Text statusFeedback;
+    public Text correctnessStatus;
     // public GameObject startScreen;
     // public GameObject endScreen;
     public AudioSource waitingMusic;
 
+
+
+    private List<bool> ClipStatus = new List<bool>();
+    private List<bool> KnifeStatus = new List<bool>();
     [System.Serializable]
     public class LightCueData
     {
@@ -56,6 +61,14 @@ public class Triggers : MonoBehaviour {
         for (int i = 0; i < lightcues.Length; i++)
         {
             lCues.Add(lightcues[i].name, lightcues[i].cue);
+        }
+
+        for(int i = 0; i < 4; i++){
+            KnifeStatus.Add(false);
+        }
+
+        for(int i = 0; i < 3; i++){
+            ClipStatus.Add(false);
         }
     }
 
@@ -369,57 +382,73 @@ public class Triggers : MonoBehaviour {
             case "Got-AlClip1":
                 // turn on LED feedback
                 LEDFeedback("AlClip1", ledON);
-                mt.mtClip(0);
+                ClipStatus[0] = true
                 break;
             case "Got-AlClip2":
                 // turn on LED feedback
                 LEDFeedback("AlClip2", ledON);
-                mt.mtClip(1);
+                ClipStatus[1] = true;
                 break;
             case "Got-AlClip3":
                 // turn on LED feedback
                 LEDFeedback("AlClip3", ledON);
-                mt.mtClip(2);
+                ClipStatus[2] = true;
                 break;
             case "Got-AlClip4":
                 // turn on LED feedback
                 LEDFeedback("AlClip4", ledON);
-                mt.mtClip(3);
+                ClipStatus[3] = true;
                 break;
             case "Lost-AlClip1":
                 // turn off LED feedback
                 LEDFeedback("AlClip1", ledOFF);
-                mt.mtClipLose(0);
+                ClipStatus[0] = false;
                 break;
             case "Lost-AlClip2":
                 // turn off LED feedback
                 LEDFeedback("AlClip2", ledOFF);
-                mt.mtClipLose(1);
+                ClipStatus[1] = false;
                 break;
             case "Lost-AlClip3":
                 // turn off LED feedback
                 LEDFeedback("AlClip3", ledOFF);
-                mt.mtClipLose(2);
+                ClipStatus[2] = false;
                 break;
             case "Lost-AlClip4":
                 // turn off LED feedback
                 LEDFeedback("AlClip4", ledOFF);
-                mt.mtClipLose(3);
+                ClipStatus[3] = false;
                 break;
             case "Got-Knife1":
                 // turn on LED feedback
                 LEDFeedback("Knife1", ledON);
-                mt.mtKnife(0);
+                KnifeStatus[0] = true;
+                if((ClipStatus[0]) && (ClipStatus[2])){
+                    correct1 = true;
+                    //Debug.Log("correct1 correct");
+                    infos.text = "correct1 correct";
+                    Debug.Log("!!!!!!!!!!");
+                }
                 break;
             case "Got-Knife2":
                 // turn on LED feedback
                 LEDFeedback("Knife2", ledON);
-                mt.mtKnife(1);
+                KnifeStatus[1] = true;
+                if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
+                    correct2 = true;
+                    infos.text = "correct2 correct";
+                    Debug.Log("@@@@@@@@@@@@");
+                }
                 break;
             case "Got-Knife3":
                 // turn on LED feedback
                 LEDFeedback("Knife3", ledON);
-                mt.mtKnife(2);
+                KnifeStatus[2] = true;
+                if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
+                    correct2 = true;
+                    infos.text = "correct2 correct";
+                    Debug.Log("@@@@@@@@@@@@");
+                }
                 break;
             case "Lost-Knife1":
                 // turn off LED feedback
