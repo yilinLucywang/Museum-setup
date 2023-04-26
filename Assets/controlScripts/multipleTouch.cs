@@ -98,7 +98,7 @@ public class multipleTouch : MonoBehaviour
     private void checkPos(){
         for(int j = 0; j < touches.Count; j++){
             for(int i = 0; i < targets.Count; i++){
-                if((Vector3.Distance(touches[i].circle.transform.position,targets[i].transform.position))<= 0.3){
+                if((Vector3.Distance(touches[j].circle.transform.position,targets[i].transform.position))<= 0.3){
                     matches[i] = true;
                 }
             }
