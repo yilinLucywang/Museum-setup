@@ -37,6 +37,10 @@ public class multipleTouch : MonoBehaviour
         for(int i = 0; i < 5; i++){
             matches.Add(false);
         }
+
+        for(int i = 0; i < 5; i++){
+            Debug.Log(targets[i].transform.position);
+        }
     }
     // Update is called once per frame
     void Update()
