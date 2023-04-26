@@ -138,7 +138,7 @@ public class multipleTouch : MonoBehaviour
         c.name = "Touch" + t.fingerId; 
         //c.transform.position = getTouchPosition(t.position); 
         Debug.Log(t.position);
-        c.transform.parent = canvas;
+        c.transform.parent = canvas.transform;
         c.transform.position = t.position; 
         circles.Add(c);
         return c;
