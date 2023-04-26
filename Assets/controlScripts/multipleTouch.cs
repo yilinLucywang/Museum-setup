@@ -21,6 +21,7 @@ public class multipleTouch : MonoBehaviour
     private bool correct2 = false;
     private bool correct3 = false;
     public Camera camera;
+    public GameObject canvas;
     void Awake(){
         anses.Add(1); 
         anses.Add(2); 
@@ -136,6 +137,8 @@ public class multipleTouch : MonoBehaviour
         GameObject c = Instantiate(circle) as GameObject;
         c.name = "Touch" + t.fingerId; 
         //c.transform.position = getTouchPosition(t.position); 
+        Debug.Log(t.position);
+        c.transform.parent = canvas;
         c.transform.position = t.position; 
         circles.Add(c);
         return c;
