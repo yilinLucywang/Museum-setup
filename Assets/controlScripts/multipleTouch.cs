@@ -20,6 +20,7 @@ public class multipleTouch : MonoBehaviour
     private bool correct1 = false;
     private bool correct2 = false;
     private bool correct3 = false;
+    public Camera camera;
     void Awake(){
         anses.Add(1); 
         anses.Add(2); 
@@ -126,7 +127,7 @@ public class multipleTouch : MonoBehaviour
 
 
     Vector2 getTouchPosition(Vector2 touchPosition){
-        return GetComponent<Camera>().ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, 0f));
+        return camera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, 0f));
     }
 
 
