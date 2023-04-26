@@ -45,6 +45,7 @@ public class multipleTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("hihihih");
         if(!end){
             int i = 0;
             while(i < Input.touchCount){
