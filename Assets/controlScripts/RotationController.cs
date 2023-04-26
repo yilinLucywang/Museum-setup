@@ -13,6 +13,7 @@ public class RotationController : MonoBehaviour
     public int radius = 207;
     public bool pressed = false;
     public int ctr = 0; 
+    public GameObject camera;
 
     public GameObject fill; 
 
