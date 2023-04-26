@@ -382,7 +382,7 @@ public class Triggers : MonoBehaviour {
             case "Got-AlClip1":
                 // turn on LED feedback
                 LEDFeedback("AlClip1", ledON);
-                ClipStatus[0] = true
+                ClipStatus[0] = true;
                 break;
             case "Got-AlClip2":
                 // turn on LED feedback
@@ -424,7 +424,6 @@ public class Triggers : MonoBehaviour {
                 LEDFeedback("Knife1", ledON);
                 KnifeStatus[0] = true;
                 if((ClipStatus[0]) && (ClipStatus[2])){
-                    correct1 = true;
                     //Debug.Log("correct1 correct");
                     correctnessStatus.text = "correct1 correct";
                     Debug.Log("!!!!!!!!!!");
@@ -435,7 +434,6 @@ public class Triggers : MonoBehaviour {
                 LEDFeedback("Knife2", ledON);
                 KnifeStatus[1] = true;
                 if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
-                    correct2 = true;
                     correctnessStatus.text = "correct2 correct";
                     Debug.Log("@@@@@@@@@@@@");
                 }
@@ -445,7 +443,6 @@ public class Triggers : MonoBehaviour {
                 LEDFeedback("Knife3", ledON);
                 KnifeStatus[2] = true;
                 if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
-                    correct2 = true;
                     correctnessStatus.text = "correct2 correct";
                     Debug.Log("@@@@@@@@@@@@");
                 }
