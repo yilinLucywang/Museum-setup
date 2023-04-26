@@ -112,6 +112,10 @@ public class multipleTouch : MonoBehaviour
                 }
             }
         }
+
+        for(int i = 0; i < matches.Count; i++){
+            Debug.Log(matches[i]);
+        }
     }
 
 
