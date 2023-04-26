@@ -64,14 +64,14 @@ public class multipleTouch : MonoBehaviour
 
             if(KnifeStatus[0]){
                 if(matches[3]){
-                    if(ClipStatus[0] and ClipStatus[2]){
+                    if((ClipStatus[0]) && (ClipStatus[2])){
                         correct1 = true;
                     }
                 }
             }
             else if(KnifeStatus[1]){
-                if(matches[1] and matches[3]){
-                    if((ClipStatus[0] and ClipStatus[1]) and (ClipStatus[2] and ClipStatus[3])){
+                if(matches[1] && matches[3]){
+                    if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                         correct2 = true;
                     }
                 }
@@ -79,13 +79,13 @@ public class multipleTouch : MonoBehaviour
             } 
             else if(KnifeStatus[2]){
                 int cnt = 0;
-                for(int i = 0; i < matches.Count; i++){
-                    if(matches[i]){
+                for(int j = 0; j < matches.Count; j++){
+                    if(matches[j]){
                         cnt += 1;
                     }
                 }
                 if(cnt == 5){
-                    if(ClipStatus[0] and ClipStatus[3]){
+                    if(ClipStatus[0] && ClipStatus[3]){
                         correct3 = true;
                     }
                 }
