@@ -73,7 +73,8 @@ public class multipleTouch : MonoBehaviour
                 if(matches[3]){
                     if((ClipStatus[0]) && (ClipStatus[2])){
                         correct1 = true;
-                        Debug.Log("correct1 correct");
+                        //Debug.Log("correct1 correct");
+                        infos.text = "correct1 correct";
                     }
                 }
             }
@@ -81,7 +82,7 @@ public class multipleTouch : MonoBehaviour
                 if(matches[1] && matches[3]){
                     if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                         correct2 = true;
-                        Debug.Log("correct2 correct");
+                        infos.text = "correct2 correct";
                     }
                 }
 
@@ -96,7 +97,7 @@ public class multipleTouch : MonoBehaviour
                 if(cnt == 5){
                     if(ClipStatus[0] && ClipStatus[3]){
                         correct3 = true;
-                        Debug.Log("correct3 correct");
+                        infos.text = "correct3 correct";
                     }
                 }
             }
