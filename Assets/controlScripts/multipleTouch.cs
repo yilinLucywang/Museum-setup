@@ -46,6 +46,7 @@ public class multipleTouch : MonoBehaviour
                 Touch t = Input.GetTouch(i); 
                 if(t.phase == TouchPhase.Began){
                     Debug.Log("touch began");
+                    //touches.Add(gameObject.AddComponent<touchLocation>(t.fingerId, createCircle(t)));
                     touches.Add(new touchLocation(t.fingerId, createCircle(t)));
                 }
                 else if(t.phase == TouchPhase.Ended){
