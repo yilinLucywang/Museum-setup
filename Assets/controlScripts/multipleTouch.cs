@@ -98,7 +98,7 @@ public class multipleTouch : MonoBehaviour
 
 
     public void mtKnife(int index){
-        Debug.Log("=======");
+        infos.text = "=========";
         KnifeStatus[index] = true;
         if(index == 0){
             if((ClipStatus[0]) && (ClipStatus[2])){
