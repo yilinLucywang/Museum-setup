@@ -130,7 +130,7 @@ public class multipleTouch : MonoBehaviour
 
     Vector2 getTouchPosition(Vector2 touchPosition){
         Vector3 pos = camera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, 0f));
-        return camera.main.WorldToViewportPoint(pos);
+        return pos;
     }
 
 
