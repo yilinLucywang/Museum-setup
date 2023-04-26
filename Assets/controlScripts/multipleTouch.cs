@@ -135,7 +135,8 @@ public class multipleTouch : MonoBehaviour
     GameObject createCircle(Touch t){
         GameObject c = Instantiate(circle) as GameObject;
         c.name = "Touch" + t.fingerId; 
-        c.transform.position = getTouchPosition(t.position); 
+        //c.transform.position = getTouchPosition(t.position); 
+        c.transform.position = t.position; 
         circles.Add(c);
         return c;
     }
