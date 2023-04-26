@@ -98,24 +98,28 @@ public class multipleTouch : MonoBehaviour
 
 
     public void mtKnife(int index){
+        Debug.Log("=======");
         KnifeStatus[index] = true;
         if(index == 0){
             if((ClipStatus[0]) && (ClipStatus[2])){
                 correct1 = true;
                 //Debug.Log("correct1 correct");
                 infos.text = "correct1 correct";
+                Debug.Log("!!!!!!!!!!");
             }
         }
         else if(index == 1){
             if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                 correct2 = true;
                 infos.text = "correct2 correct";
+                Debug.Log("@@@@@@@@@@@@");
             }
         }
         else if(index == 2){
             if(ClipStatus[0] && ClipStatus[3]){
                 correct3 = true;
                 infos.text = "correct3 correct";
+                Debug.Log("##############");
             }
         }
     }
