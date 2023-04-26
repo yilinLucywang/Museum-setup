@@ -426,7 +426,7 @@ public class Triggers : MonoBehaviour {
                 if((ClipStatus[0]) && (ClipStatus[2])){
                     correct1 = true;
                     //Debug.Log("correct1 correct");
-                    infos.text = "correct1 correct";
+                    correctnessStatus.text = "correct1 correct";
                     Debug.Log("!!!!!!!!!!");
                 }
                 break;
@@ -436,7 +436,7 @@ public class Triggers : MonoBehaviour {
                 KnifeStatus[1] = true;
                 if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                     correct2 = true;
-                    infos.text = "correct2 correct";
+                    correctnessStatus.text = "correct2 correct";
                     Debug.Log("@@@@@@@@@@@@");
                 }
                 break;
@@ -446,7 +446,7 @@ public class Triggers : MonoBehaviour {
                 KnifeStatus[2] = true;
                 if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                     correct2 = true;
-                    infos.text = "correct2 correct";
+                    correctnessStatus.text = "correct2 correct";
                     Debug.Log("@@@@@@@@@@@@");
                 }
                 break;
