@@ -73,6 +73,7 @@ public class multipleTouch : MonoBehaviour
                 if(matches[3]){
                     if((ClipStatus[0]) && (ClipStatus[2])){
                         correct1 = true;
+                        Debug.Log("correct1 correct");
                     }
                 }
             }
@@ -80,6 +81,7 @@ public class multipleTouch : MonoBehaviour
                 if(matches[1] && matches[3]){
                     if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                         correct2 = true;
+                        Debug.Log("correct2 correct");
                     }
                 }
 
@@ -94,6 +96,7 @@ public class multipleTouch : MonoBehaviour
                 if(cnt == 5){
                     if(ClipStatus[0] && ClipStatus[3]){
                         correct3 = true;
+                        Debug.Log("correct3 correct");
                     }
                 }
             }
@@ -104,7 +107,7 @@ public class multipleTouch : MonoBehaviour
     private void checkPos(){
         for(int j = 0; j < touches.Count; j++){
             for(int i = 0; i < targets.Count; i++){
-                if((Vector3.Distance(touches[j].circle.transform.position,targets[i].transform.position))<= 0.3){
+                if((Vector3.Distance(touches[j].circle.transform.position,targets[i].transform.position))<= 5){
                     matches[i] = true;
                 }
             }
