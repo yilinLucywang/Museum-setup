@@ -13,6 +13,9 @@ public class Triggers : MonoBehaviour {
     public AudioSource waitingMusic;
     public Text infos;
 
+    public AudioSource acWin; 
+    public AudioSource acLose;
+
 
     private List<bool> ClipStatus = new List<bool>();
     private List<bool> KnifeStatus = new List<bool>();
@@ -338,9 +341,11 @@ public class Triggers : MonoBehaviour {
                 }
                 if(cnt == 4){
                     infos.text = "correct";
+                    acWin.Play();
                 }
                 else{
                     infos.text = "incorrect";
+                    acLose.Play();
                 }
                 break;
             case "Lost-Toggle1":
@@ -390,9 +395,11 @@ public class Triggers : MonoBehaviour {
                 }
                 if(cnt == 2){
                     infos.text = "correct";
+                    acWin.Play();
                 }
                 else{
                     infos.text = "incorrect";
+                    acLose.Play();
                 }
                 break;
             case "Lost-CoverToggle1":
@@ -463,6 +470,7 @@ public class Triggers : MonoBehaviour {
                 if((ClipStatus[0]) && (ClipStatus[2])){
                     //Debug.Log("correct1 correct");
                     correctnessStatus.text = "correct1 correct";
+                    acWin.Play();
                     Debug.Log("!!!!!!!!!!");
                 }
                 break;
@@ -473,6 +481,7 @@ public class Triggers : MonoBehaviour {
                 if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                     correctnessStatus.text = "correct2 correct";
                     Debug.Log("@@@@@@@@@@@@");
+                    acWin.Play();
                 }
                 break;
             case "Got-Knife3":
@@ -480,8 +489,9 @@ public class Triggers : MonoBehaviour {
                 LEDFeedback("Knife3", ledON);
                 KnifeStatus[2] = true;
                 if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
-                    correctnessStatus.text = "correct2 correct";
+                    correctnessStatus.text = "correct3 correct";
                     Debug.Log("@@@@@@@@@@@@");
+                    acWin.Play();
                 }
                 break;
             case "Lost-Knife1":

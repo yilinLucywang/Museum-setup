@@ -35,6 +35,8 @@ public class RotationController : MonoBehaviour
     public List<bool> passStatus = new List<bool>();
     private List<bool> scoringStatus = new List<bool>();
     private bool gameEnd = false; 
+    public AudioSource acWin; 
+    public AudioSource acLose;
     void Awake(){
         oriPos = new Vector2(edge.transform.position.x, edge.transform.position.y);
         ansValue.Add(0.25f);
@@ -139,9 +141,11 @@ public class RotationController : MonoBehaviour
         if(barValue >= ansValue[0]){
             scoringStatus[0] = true;
             infobox1.text = "sublevel one correct";
+            acWin.Play();
         }
         else{
             infobox1.text = "sublevel one incorrect";
+            acLose.Play();
         }
     }
 
@@ -149,9 +153,11 @@ public class RotationController : MonoBehaviour
         if(barValue >= ansValue[1]){
             scoringStatus[1] = true;
             infobox2.text = "sublevel two correct";
+            acWin.Play();
         }
         else{
             infobox2.text = "sublevel two incorrect";
+            acLose.Play();
         }
     }
 
@@ -159,9 +165,11 @@ public class RotationController : MonoBehaviour
         if(barValue >= ansValue[2]){
             scoringStatus[2] = true;
             infobox3.text = "sublevel three correct";
+            acWin.Play();
         }
         else{
             infobox3.text = "sublevel three incorrect";
+            acLose.Play();
         }
     }
 }

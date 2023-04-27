@@ -22,6 +22,8 @@ public class multipleTouch : MonoBehaviour
     private bool correct3 = false;
     public Camera camera;
     public GameObject canvas;
+    public AudioSource acWin; 
+    public AudioSource acLose;
     void Awake(){
         anses.Add(1); 
         anses.Add(2); 
