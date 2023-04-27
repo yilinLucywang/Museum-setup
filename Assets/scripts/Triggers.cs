@@ -11,11 +11,16 @@ public class Triggers : MonoBehaviour {
     // public GameObject startScreen;
     // public GameObject endScreen;
     public AudioSource waitingMusic;
-
+    public Text infos;
 
 
     private List<bool> ClipStatus = new List<bool>();
     private List<bool> KnifeStatus = new List<bool>();
+    private List<bool> ToggleStatus = new List<bool>(); 
+    private List<bool> ToggleAns = new List<bool>{true, true, true, false};
+    private List<bool> CoverToggleStatus = new List<bool>();
+    private List<bool> CoverToggleAns = new List<bool>{true, true};
+
     [System.Serializable]
     public class LightCueData
     {
@@ -69,6 +74,14 @@ public class Triggers : MonoBehaviour {
 
         for(int i = 0; i < 3; i++){
             ClipStatus.Add(false);
+        }
+
+        for(int i = 0; i < 3; i++){
+            CoverToggleStatus.Add(false);
+        }
+
+        for(int i = 0; i < 5; i++){
+            ToggleStatus.Add(false);
         }
     }
 
@@ -296,82 +309,106 @@ public class Triggers : MonoBehaviour {
             case "Got-Toggle1":
                 // turn on LED feedback
                 LEDFeedback("Toggle1", ledON);
-                tc.getToggles(0);
+                ToggleStatus[0] = true;
                 break;
             case "Got-Toggle2":
                 // turn on LED feedback
                 LEDFeedback("Toggle2", ledON);
-                tc.getToggles(1);
+                ToggleStatus[1] = true;
                 break;
             case "Got-Toggle3":
                 // turn on LED feedback
                 LEDFeedback("Toggle3", ledON);
-                tc.getToggles(2);
+                ToggleStatus[2] = true;
                 break;
             case "Got-Toggle4":
                 // turn on LED feedback
                 LEDFeedback("Toggle4", ledON);
-                tc.getToggles(3);
+                ToggleStatus[3] = true;
                 break;
             case "Got-Toggle5":
                 // turn on LED feedback
                 LEDFeedback("Toggle5", ledON);
-                tc.getToggles(4);
+                ToggleStatus[4] = true;
+                int cnt = 0;
+                for(int i = 0; i < ToggleAns.Count; i++){
+                    if(ToggleAns[i] == ToggleStatus[i]){
+                        cnt += 1;
+                    }
+                }
+                if(cnt == 4){
+                    infos.text = "correct";
+                }
+                else{
+                    infos.text = "incorrect";
+                }
                 break;
             case "Lost-Toggle1":
                 // turn off LED feedback
                 LEDFeedback("Toggle1", ledOFF);
-                tc.lostToggles(0);
+                ToggleStatus[0] = false;
                 break;
             case "Lost-Toggle2":
                 // turn off LED feedback
                 LEDFeedback("Toggle2", ledOFF);
-                tc.lostToggles(1);
+                ToggleStatus[1] = false;
                 break;
             case "Lost-Toggle3":
                 // turn off LED feedback
                 LEDFeedback("Toggle3", ledOFF);
-                tc.lostToggles(2);
+                ToggleStatus[2] = false;
                 break;
             case "Lost-Toggle4":
                 // turn off LED feedback
                 LEDFeedback("Toggle4", ledOFF);
-                tc.lostToggles(3);
+                ToggleStatus[3] = false;
                 break;
             case "Lost-Toggle5":
                 // turn off LED feedback
                 LEDFeedback("Toggle5", ledOFF);
-                tc.lostToggles(4);
+                ToggleStatus[4] = false;
                 break;
             case "Got-CoverToggle1":
                 // turn on LED feedback
                 LEDFeedback("CoverToggle1", ledON);
-                rc.getCToggles(0);
+                CoverToggleStatus[0] = true;
                 break;
             case "Got-CoverToggle2":
                 // turn on LED feedback
                 LEDFeedback("CoverToggle2", ledON);
-                rc.getCToggles(1);
+                CoverToggleStatus[1] = true;
                 break;
             case "Got-CoverToggle3":
                 // turn on LED feedback
                 LEDFeedback("CoverToggle3", ledON);
-                rc.getCToggles(2);
+                CoverToggleStatus[2] = true;
+                cnt = 0;
+                for(int i = 0; i < CoverToggleAns.Count; i++){
+                    if(CoverToggleAns[i] == CoverToggleStatus[i]){
+                        cnt += 1;
+                    }
+                }
+                if(cnt == 2){
+                    infos.text = "correct";
+                }
+                else{
+                    infos.text = "incorrect";
+                }
                 break;
             case "Lost-CoverToggle1":
                 // turn off LED feedback
                 LEDFeedback("CoverToggle1", ledOFF);
-                rc.lostCToggles(0);
+                CoverToggleStatus[0] = false;
                 break;
             case "Lost-CoverToggle2":
                 // turn off LED feedback
                 LEDFeedback("CoverToggle2", ledOFF);
-                rc.lostCToggles(1);
+                CoverToggleStatus[1] = false;
                 break;
             case "Lost-CoverToggle3":
                 // turn off LED feedback
                 LEDFeedback("CoverToggle3", ledOFF);
-                rc.lostCToggles(2);
+                CoverToggleStatus[2] = false;
                 break;
             case "Got-Key":
 
