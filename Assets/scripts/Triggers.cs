@@ -65,6 +65,10 @@ public class Triggers : MonoBehaviour {
     private int ledOFF = 0;
     private Dictionary<string, LightCueData> lCues;
 
+    void Awake(){
+        L1R.SetActive(false);
+        L2R.SetActive(false);
+    }
     // Use this for initialization
     void Start () {
         state = "preShow";
