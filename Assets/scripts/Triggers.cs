@@ -23,8 +23,6 @@ public class Triggers : MonoBehaviour {
     public GameObject L2N; 
     public GameObject L2R;
 
-    public int wrongCnt = 0;
-
     private List<bool> ClipStatus = new List<bool>();
     private List<bool> KnifeStatus = new List<bool>();
     private List<bool> ToggleStatus = new List<bool>(); 
@@ -357,8 +355,8 @@ public class Triggers : MonoBehaviour {
                 }
                 else{
                     infos.text = "incorrect";
-                    wrongCnt += 1; 
-                    if(wrongCnt == 1){
+                    WrongCnt.addCnt(); 
+                    if(WrongCnt.wrongCnt == 1){
                         acLose.Play();
                         L1N.SetActive(false);
                         L1R.SetActive(true);
@@ -425,8 +423,8 @@ public class Triggers : MonoBehaviour {
                 }
                 else{
                     infos.text = "incorrect";
-                    wrongCnt += 1; 
-                    if(wrongCnt == 1){
+                    WrongCnt.addCnt(); 
+                    if(WrongCnt.wrongCnt == 1){
                         acLose.Play();
                         L1N.SetActive(false);
                         L1R.SetActive(true);
@@ -514,8 +512,8 @@ public class Triggers : MonoBehaviour {
                     Debug.Log("!!!!!!!!!!");
                 }
                 else{
-                    wrongCnt += 1; 
-                    if(wrongCnt == 1){
+                    WrongCnt.addCnt(); 
+                    if(WrongCnt.wrongCnt == 1){
                         acLose.Play();
                         L1N.SetActive(false);
                         L1R.SetActive(true);
@@ -541,8 +539,8 @@ public class Triggers : MonoBehaviour {
                     acWin.Play();
                 }
                 else{
-                    wrongCnt += 1; 
-                    if(wrongCnt == 1){
+                    WrongCnt.addCnt(); 
+                    if(WrongCnt.wrongCnt == 1){
                         acLose.Play();
                         L1N.SetActive(false);
                         L1R.SetActive(true);
@@ -568,8 +566,8 @@ public class Triggers : MonoBehaviour {
                     acWin.Play();
                 }
                 else{
-                    wrongCnt += 1; 
-                    if(wrongCnt == 1){
+                    WrongCnt.addCnt(); 
+                    if(WrongCnt.wrongCnt == 1){
                         acLose.Play();
                         L1N.SetActive(false);
                         L1R.SetActive(true);
