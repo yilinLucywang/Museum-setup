@@ -15,7 +15,15 @@ public class Triggers : MonoBehaviour {
 
     public AudioSource acWin; 
     public AudioSource acLose;
+    public AudioSource acAllLose;
 
+    public GameObject L1N; 
+    public GameObject L1R; 
+
+    public GameObject L2N; 
+    public GameObject L2R;
+
+    public int wrongCnt = 0;
 
     private List<bool> ClipStatus = new List<bool>();
     private List<bool> KnifeStatus = new List<bool>();
@@ -345,7 +353,21 @@ public class Triggers : MonoBehaviour {
                 }
                 else{
                     infos.text = "incorrect";
-                    acLose.Play();
+                    wrongCnt += 1; 
+                    if(wrongCnt == 1){
+                        acLose.Play();
+                        L1N.SetActive(false);
+                        L1R.SetActive(true);
+                        acLose.Play();
+                    }
+                    else{
+                        L1N.SetActive(false); 
+                        L2N.SetActive(false); 
+
+                        L1R.SetActive(true); 
+                        L2R.SetActive(true);
+                        acAllLose.Play();
+                    }
                 }
                 break;
             case "Lost-Toggle1":
@@ -399,7 +421,21 @@ public class Triggers : MonoBehaviour {
                 }
                 else{
                     infos.text = "incorrect";
-                    acLose.Play();
+                    wrongCnt += 1; 
+                    if(wrongCnt == 1){
+                        acLose.Play();
+                        L1N.SetActive(false);
+                        L1R.SetActive(true);
+                        acLose.Play();
+                    }
+                    else{
+                        L1N.SetActive(false); 
+                        L2N.SetActive(false); 
+
+                        L1R.SetActive(true); 
+                        L2R.SetActive(true);
+                        acAllLose.Play();
+                    }
                 }
                 break;
             case "Lost-CoverToggle1":
@@ -473,6 +509,23 @@ public class Triggers : MonoBehaviour {
                     acWin.Play();
                     Debug.Log("!!!!!!!!!!");
                 }
+                else{
+                    wrongCnt += 1; 
+                    if(wrongCnt == 1){
+                        acLose.Play();
+                        L1N.SetActive(false);
+                        L1R.SetActive(true);
+                        acLose.Play();
+                    }
+                    else{
+                        L1N.SetActive(false); 
+                        L2N.SetActive(false); 
+
+                        L1R.SetActive(true); 
+                        L2R.SetActive(true);
+                        acAllLose.Play();
+                    }
+                }
                 break;
             case "Got-Knife2":
                 // turn on LED feedback
@@ -483,6 +536,23 @@ public class Triggers : MonoBehaviour {
                     Debug.Log("@@@@@@@@@@@@");
                     acWin.Play();
                 }
+                else{
+                    wrongCnt += 1; 
+                    if(wrongCnt == 1){
+                        acLose.Play();
+                        L1N.SetActive(false);
+                        L1R.SetActive(true);
+                        acLose.Play();
+                    }
+                    else{
+                        L1N.SetActive(false); 
+                        L2N.SetActive(false); 
+
+                        L1R.SetActive(true); 
+                        L2R.SetActive(true);
+                        acAllLose.Play();
+                    }
+                }
                 break;
             case "Got-Knife3":
                 // turn on LED feedback
@@ -492,6 +562,23 @@ public class Triggers : MonoBehaviour {
                     correctnessStatus.text = "correct3 correct";
                     Debug.Log("@@@@@@@@@@@@");
                     acWin.Play();
+                }
+                else{
+                    wrongCnt += 1; 
+                    if(wrongCnt == 1){
+                        acLose.Play();
+                        L1N.SetActive(false);
+                        L1R.SetActive(true);
+                        acLose.Play();
+                    }
+                    else{
+                        L1N.SetActive(false); 
+                        L2N.SetActive(false); 
+
+                        L1R.SetActive(true); 
+                        L2R.SetActive(true);
+                        acAllLose.Play();
+                    }
                 }
                 break;
             case "Lost-Knife1":
