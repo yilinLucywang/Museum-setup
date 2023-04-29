@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Triggers : MonoBehaviour {
 
@@ -371,6 +372,7 @@ public class Triggers : MonoBehaviour {
                         acAllLose.Play();
                     }
                 }
+                SceneManager.LoadScene (1);
                 break;
             case "Lost-Toggle1":
                 // turn off LED feedback

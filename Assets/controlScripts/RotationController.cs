@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
 using System; 
+using UnityEngine.SceneManagement;
 
 public class RotationController : MonoBehaviour
 {
@@ -37,6 +38,12 @@ public class RotationController : MonoBehaviour
     private bool gameEnd = false; 
     public AudioSource acWin; 
     public AudioSource acLose;
+    public AudioSource acAllLose; 
+
+    public GameObject L1N; 
+    public GameObject L1R;
+    public GameObject L2N;
+    public GameObject L2R;
     void Awake(){
         oriPos = new Vector2(edge.transform.position.x, edge.transform.position.y);
         ansValue.Add(0.25f);
@@ -145,7 +152,21 @@ public class RotationController : MonoBehaviour
         }
         else{
             infobox1.text = "sublevel one incorrect";
-            acLose.Play();
+            WrongCnt.addCnt(); 
+            if(WrongCnt.wrongCnt == 1){
+                acLose.Play();
+                L1N.SetActive(false);
+                L1R.SetActive(true);
+                acLose.Play();
+            }
+            else{
+                L1N.SetActive(false); 
+                L2N.SetActive(false); 
+
+                L1R.SetActive(true); 
+                L2R.SetActive(true);
+                acAllLose.Play();
+            }
         }
     }
 
@@ -157,7 +178,21 @@ public class RotationController : MonoBehaviour
         }
         else{
             infobox2.text = "sublevel two incorrect";
-            acLose.Play();
+            WrongCnt.addCnt(); 
+            if(WrongCnt.wrongCnt == 1){
+                acLose.Play();
+                L1N.SetActive(false);
+                L1R.SetActive(true);
+                acLose.Play();
+            }
+            else{
+                L1N.SetActive(false); 
+                L2N.SetActive(false); 
+
+                L1R.SetActive(true); 
+                L2R.SetActive(true);
+                acAllLose.Play();
+            }
         }
     }
 
@@ -169,7 +204,22 @@ public class RotationController : MonoBehaviour
         }
         else{
             infobox3.text = "sublevel three incorrect";
-            acLose.Play();
+            WrongCnt.addCnt(); 
+            if(WrongCnt.wrongCnt == 1){
+                acLose.Play();
+                L1N.SetActive(false);
+                L1R.SetActive(true);
+                acLose.Play();
+            }
+            else{
+                L1N.SetActive(false); 
+                L2N.SetActive(false); 
+
+                L1R.SetActive(true); 
+                L2R.SetActive(true);
+                acAllLose.Play();
+            }
         }
+        SceneManager.LoadScene(2);
     }
 }
