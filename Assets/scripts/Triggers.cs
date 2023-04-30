@@ -13,9 +13,16 @@ public class Triggers : MonoBehaviour {
     public AudioSource good; 
     public AudioSource bad; 
     public AudioSource allBad;
+    public GameObject L1N; 
+    public GameObject L1R; 
+
+    public GameObject L2N; 
+    public GameObject L2R;
     public List<bool> answer = new List<bool> { true, false, true, false, true}; 
     public List<bool> toggles = new List<bool> {false, false, false, false,false};
 
+    public List<bool> ClipStatus = new List<bool>();
+    public List<bool> KnifeStatus = new List<bool>();
     public Text infos; 
     [System.Serializable]
     public class LightCueData
@@ -62,6 +69,14 @@ public class Triggers : MonoBehaviour {
         for (int i = 0; i < lightcues.Length; i++)
         {
             lCues.Add(lightcues[i].name, lightcues[i].cue);
+        }
+
+        for(int i = 0; i < 4; i++){
+            KnifeStatus.Add(false);
+        }
+
+        for(int i = 0; i < 3; i++){
+            ClipStatus.Add(false);
         }
     }
 
@@ -380,57 +395,82 @@ public class Triggers : MonoBehaviour {
             case "Got-AlClip1":
                 // turn on LED feedback
                 LEDFeedback("AlClip1", ledON);
-
+                ClipStatus[0] = true;
                 break;
             case "Got-AlClip2":
                 // turn on LED feedback
                 LEDFeedback("AlClip2", ledON);
-
+                ClipStatus[1] = true;
                 break;
             case "Got-AlClip3":
                 // turn on LED feedback
                 LEDFeedback("AlClip3", ledON);
-
+                ClipStatus[2] = true;
                 break;
             case "Got-AlClip4":
                 // turn on LED feedback
                 LEDFeedback("AlClip4", ledON);
-
+                ClipStatus[3] = true;
                 break;
             case "Lost-AlClip1":
                 // turn off LED feedback
                 LEDFeedback("AlClip1", ledOFF);
-
+                ClipStatus[0] = false;
                 break;
             case "Lost-AlClip2":
                 // turn off LED feedback
                 LEDFeedback("AlClip2", ledOFF);
-
+                ClipStatus[1] = false;
                 break;
             case "Lost-AlClip3":
                 // turn off LED feedback
                 LEDFeedback("AlClip3", ledOFF);
-
+                ClipStatus[2] = false;
                 break;
             case "Lost-AlClip4":
                 // turn off LED feedback
                 LEDFeedback("AlClip4", ledOFF);
-
+                ClipStatus[3] = false;
                 break;
             case "Got-Knife1":
                 // turn on LED feedback
                 LEDFeedback("Knife1", ledON);
-
+                KnifeStatus[0] = true;
+                if((ClipStatus[0]) && (ClipStatus[2])){
+                    //Debug.Log("correct1 correct");
+                    infos.text = "correct1 correct";
+                    good.Play();
+                    Debug.Log("!!!!!!!!!!");
+                }
+                else{
+                    bad.Play();
+                }
                 break;
             case "Got-Knife2":
                 // turn on LED feedback
                 LEDFeedback("Knife2", ledON);
-
+                KnifeStatus[1] = true;
+                if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
+                    infos.text = "correct2 correct";
+                    Debug.Log("@@@@@@@@@@@@");
+                    good.Play();
+                }
+                else{
+                    bad.Play();
+                }
                 break;
             case "Got-Knife3":
                 // turn on LED feedback
                 LEDFeedback("Knife3", ledON);
-
+                KnifeStatus[2] = true;
+                if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
+                    infos.text = "correct3 correct";
+                    Debug.Log("@@@@@@@@@@@@");
+                    good.Play();
+                }
+                else{
+                    bad.Play();
+                }
                 break;
             case "Lost-Knife1":
                 // turn off LED feedback
