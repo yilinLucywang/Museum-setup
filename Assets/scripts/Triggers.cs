@@ -352,9 +352,11 @@ public class Triggers : MonoBehaviour {
                 }
                 if(cnt == 4){
                     infos.text = "correct";
+                    Debug.Log("correct answer");
                     acWin.Play();
                 }
                 else{
+                    Debug.Log("incorrect answer");
                     infos.text = "incorrect";
                     WrongCnt.addCnt(); 
                     if(WrongCnt.wrongCnt == 1){
