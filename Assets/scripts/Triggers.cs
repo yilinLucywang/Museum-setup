@@ -22,8 +22,8 @@ public class Triggers : MonoBehaviour {
     public List<bool> answer = new List<bool> { true, false, true, false, true}; 
     public List<bool> toggles = new List<bool> {false, false, false, false,false};
 
-    public List<bool> ClipStatus = new List<bool>();
-    public List<bool> KnifeStatus = new List<bool>();
+    public List<bool> ClipStatus = new List<bool> { false, false, false, false};
+    public List<bool> KnifeStatus = new List<bool> { false, false, false};
     public Text infos; 
     [System.Serializable]
     public class LightCueData
@@ -438,41 +438,47 @@ public class Triggers : MonoBehaviour {
                 // turn on LED feedback
                 LEDFeedback("Knife1", ledON);
                 KnifeStatus[0] = true;
-                if((ClipStatus[0]) && (ClipStatus[2])){
+                if((ClipStatus[1]) && (ClipStatus[3])){
                     //Debug.Log("correct1 correct");
                     infos.text = "correct1 correct";
                     good.Play();
                     Debug.Log("!!!!!!!!!!");
                 }
                 else{
+                    infos.text = ClipStatus[0].ToString() + ClipStatus[1].ToString() + ClipStatus[2].ToString() + ClipStatus[3].ToString();
+                    infos.text += "1 wrong";
                     bad.Play();
                 }
                 break;
             case "Got-Knife2":
                 // turn on LED feedback
                 LEDFeedback("Knife2", ledON);
-                KnifeStatus[1] = true;
+                /*KnifeStatus[1] = true;
                 if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
                     infos.text = "correct2 correct";
                     Debug.Log("@@@@@@@@@@@@");
                     good.Play();
                 }
                 else{
+                    infos.text = ClipStatus[0].ToString() + ClipStatus[1].ToString() + ClipStatus[2].ToString() + ClipStatus[3].ToString();
+                    infos.text += "2 wrong";
                     bad.Play();
-                }
+                }*/
                 break;
             case "Got-Knife3":
                 // turn on LED feedback
                 LEDFeedback("Knife3", ledON);
-                KnifeStatus[2] = true;
-                if(((ClipStatus[0]) && ClipStatus[1]) && (ClipStatus[2] && ClipStatus[3])){
+                /*KnifeStatus[2] = true;
+                if((ClipStatus[0] && ClipStatus[3])){
                     infos.text = "correct3 correct";
                     Debug.Log("@@@@@@@@@@@@");
                     good.Play();
                 }
                 else{
+                    infos.text = ClipStatus[0].ToString() + ClipStatus[1].ToString() + ClipStatus[2].ToString() + ClipStatus[3].ToString();
+                    infos.text += "3 wrong";
                     bad.Play();
-                }
+                }*/
                 break;
             case "Lost-Knife1":
                 // turn off LED feedback
