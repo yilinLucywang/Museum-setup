@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
 using System; 
+using UnityEngine.SceneManagement;
 
 public class RotationController : MonoBehaviour
 {
@@ -20,12 +21,23 @@ public class RotationController : MonoBehaviour
 
     public float barValue = 0; 
     public float decreaseRate = 0.02f;
-    public float increaeRate = 0.02f;
+    public float increaeRate = 0.10f;
 
     private Vector2 oriPos; 
 
     private float prevAngle = 0; 
     private float fullValue = 1f;
+    private float ratio = 0.0f;
+
+
+    public AudioSource good; 
+    public AudioSource bad; 
+    public AudioSource allBad;
+    public GameObject L1N; 
+    public GameObject L1R; 
+
+    public GameObject L2N; 
+    public GameObject L2R;
     void Awake(){
         oriPos = new Vector2(edge.transform.position.x, edge.transform.position.y);
     }
@@ -48,7 +60,7 @@ public class RotationController : MonoBehaviour
         }
 
         //update the value of the bar 
-        float ratio = barValue/fullValue;
+        ratio = Mathf.Max(barValue/fullValue,1.0f);
         fill.transform.localScale = new Vector3(fill.transform.localScale.x, ratio, fill.transform.localScale.z);
     }
 
@@ -80,7 +92,7 @@ public class RotationController : MonoBehaviour
             //2. if angle larger, increase the value
         float angle = Vector2.Angle(normVec, rotVec);
         if(angle < prevAngle){
-            barValue = 0f;
+            prevAngle = angle;
         }
         else{
             float angleDiff = angle - prevAngle; 
@@ -90,9 +102,31 @@ public class RotationController : MonoBehaviour
 
     }
 
-
-    private void decreaseBar(){
-
+    public void submit1(){
+        if(ratio > 0.25f){
+            good.Play();
+        }
+        else{
+            bad.Play();
+        }
     }
 
+    public void submit2(){
+        if(ratio > 0.5f){
+            good.Play();
+        }
+        else{
+            bad.Play();
+        }
+    }
+
+    public void submit3(){
+        if(ratio > 0.75f){
+            good.Play();
+        }
+        else{
+            bad.Play();
+        }
+        SceneManager.LoadScene(2);
+    }
 }
