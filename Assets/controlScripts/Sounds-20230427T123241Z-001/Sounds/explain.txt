@@ -1,0 +1,44 @@
+打//的你看时间多就做，没时间就别做了！！谢谢hhh
+
+
+第一个puzzle, 左边的实体5个switch 的音效：
+
+1. 结束时(赢了):GoodFeedBack > GoodFeedBack1.wav 
+	//然后绿灯亮了的时候放这个：LightOn > GreenLightOn.wav
+
+   结束时(输了):BadFeedBack > BadFeedback.wav
+	//然后红灯亮了的时候放这个：LightOn > RedLightOn.wav
+
+
+第二个puzzle, 转动齿轮调整3词bar的高低，音效：
+
+1. 转动齿轮时，每过一点角度播放一次：GearSpin > GearSpin/GearSpin2.wav （随便哪个都可以，也可以随机）
+
+2. //每完成一个bar, 播放一次：Steam > SteamShort (随便一个吧）
+
+3. 结束时(赢了):GoodFeedBack > GoodFeedBack2.wav 
+	//然后绿灯亮了的时候放这个：LightOn > GreenLightOn.wav
+
+   结束时(输了):BadFeedBack > BadFeedback.wav
+	//然后红灯亮了的时候放这个：LightOn > RedLightOn.wav
+
+
+第三个puzzle, 按屏幕按钮和操作左边的实体部分：
+
+1. 每次按按钮播放: Button > Button.wav
+
+2. 结束时(赢了):GoodFeedBack > GoodFeedBack3.wav 
+	//然后绿灯亮了的时候放这个：LightOn > GreenLightOn.wav
+
+   结束时(输了):BadFeedBack > BadFeedback.wav
+	//然后红灯亮了的时候放这个：LightOn > RedLightOn.wav
+
+
+然后整体ambience放：BombAmbience > BombAmbience_loop.wav (可以loop)
+
+然后两次失败就直接输了嘛，那边就放 Lose > LoseGameBomb.wav
+
+赢了的话就 Win > Win.wav
+
+
+谢谢Lucy！

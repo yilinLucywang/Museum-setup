@@ -10,6 +10,9 @@ public class Triggers : MonoBehaviour {
     // public GameObject startScreen;
     // public GameObject endScreen;
     public AudioSource waitingMusic;
+    public AudioSource good; 
+    public AudioSource bad; 
+    public AudioSource allBad;
     public List<bool> answer = new List<bool> { true, false, true, false, true}; 
     public List<bool> toggles = new List<bool> {false, false, false, false,false};
 
@@ -305,13 +308,15 @@ public class Triggers : MonoBehaviour {
                 bool iscorrect = true;
                 for (int i = 0; i < 4; i++) {
                     if (answer[i] != toggles[i]) {
-                        infos.text = answer[0].ToString() + answer[1].ToString() + answer[2].ToString() + answer[3].ToString();
-                        infos.text += i.ToString() + toggles[i].ToString() + answer[i].ToString();
-                        //infos.text = "incorrect";
+                        //infos.text = answer[0].ToString() + answer[1].ToString() + answer[2].ToString() + answer[3].ToString();
+                        //infos.text += i.ToString() + toggles[i].ToString() + answer[i].ToString();
+                        infos.text = "incorrect";
+                        bad.Play();
                         iscorrect = false;
                     }
                 }
                 if (iscorrect) {
+                    good.Play();
                     infos.text = "correct";
                 }
                 break;
