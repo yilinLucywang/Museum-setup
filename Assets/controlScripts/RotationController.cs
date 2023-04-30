@@ -55,12 +55,14 @@ public class RotationController : MonoBehaviour
             rotateObject(mousePosition);
         }
         //decreases the value
-        if(barValue > 0){
+        if(barValue >= 0){
             barValue -= decreaseRate * Time.deltaTime;
         }
-
+        Debug.Log(barValue);
         //update the value of the bar 
-        ratio = Mathf.Max(barValue/fullValue,1.0f);
+        barValue = Mathf.Min(barValue, fullValue);
+        barValue = Mathf.Max(barValue, 0.0f);
+        ratio = Mathf.Min(barValue/fullValue,1.0f);
         fill.transform.localScale = new Vector3(fill.transform.localScale.x, ratio, fill.transform.localScale.z);
     }
 
@@ -92,7 +94,8 @@ public class RotationController : MonoBehaviour
             //2. if angle larger, increase the value
         float angle = Vector2.Angle(normVec, rotVec);
         if(angle < prevAngle){
-            prevAngle = angle;
+            prevAngle = 0;
+            barValue = 0;
         }
         else{
             float angleDiff = angle - prevAngle; 
