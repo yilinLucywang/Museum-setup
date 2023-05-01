@@ -104,6 +104,11 @@ public class Triggers : MonoBehaviour {
         Trigger(trigger);
     }
 
+    IEnumerator WaitToNextLevel(){
+        yield return new WaitForSeconds(25);
+        SceneManager.LoadScene (1);
+    }
+
     string BuildLightMessage(string name)
     {
         string s = "/lighting " +
@@ -340,7 +345,7 @@ public class Triggers : MonoBehaviour {
                     win.Play();
                     infos.text = "correct";
                 }
-                SceneManager.LoadScene (1);
+                StartCoroutine(WaitToNextLevel());
                 break;
             case "Lost-Toggle1":
                 // turn off LED feedback

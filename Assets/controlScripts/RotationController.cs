@@ -127,6 +127,11 @@ public class RotationController : MonoBehaviour
         }
     }
 
+    IEnumerator WaitToNextLevel(){
+        yield return new WaitForSeconds(25);
+        SceneManager.LoadScene (2);
+    }
+
     public void submit3(){
         if(ratio > 0.75f){
             good.Play();
@@ -141,6 +146,6 @@ public class RotationController : MonoBehaviour
         else{
             lose.Play();
         }
-        SceneManager.LoadScene(2);
+        StartCoroutine(WaitToNextLevel());
     }
 }
