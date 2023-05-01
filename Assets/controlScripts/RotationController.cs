@@ -16,8 +16,8 @@ public class RotationController : MonoBehaviour
     public int ctr = 0; 
 
     public GameObject fill; 
-
-
+    public List<GameObject> ns;
+    private int index = 0;
 
     public float barValue = 0; 
     public float decreaseRate = 0.02f;
@@ -113,6 +113,8 @@ public class RotationController : MonoBehaviour
         }
         else{
             cnt += 1;
+            ns[index].SetActive(false);
+            index += 1;
             bad.Play();
         }
     }
@@ -123,6 +125,8 @@ public class RotationController : MonoBehaviour
         }
         else{
             cnt += 1;
+            ns[index].SetActive(false);
+            index = index + 1;
             bad.Play();
         }
     }
