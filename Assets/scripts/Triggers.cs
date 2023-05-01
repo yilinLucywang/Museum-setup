@@ -19,6 +19,9 @@ public class Triggers : MonoBehaviour {
 
     public GameObject L2N; 
     public GameObject L2R;
+
+    public AudioSource win;
+    public AudioSource lose;
     public List<bool> answer = new List<bool> { true, false, true, false, true}; 
     public List<bool> toggles = new List<bool> {false, false, false, false,false};
 
@@ -328,11 +331,13 @@ public class Triggers : MonoBehaviour {
                         //infos.text += i.ToString() + toggles[i].ToString() + answer[i].ToString();
                         infos.text = "incorrect";
                         bad.Play();
+                        lose.Play();
                         iscorrect = false;
                     }
                 }
                 if (iscorrect) {
                     good.Play();
+                    win.Play();
                     infos.text = "correct";
                 }
                 SceneManager.LoadScene (1);
