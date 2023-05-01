@@ -28,11 +28,13 @@ public class RotationController : MonoBehaviour
     private float prevAngle = 0; 
     private float fullValue = 1f;
     private float ratio = 0.0f;
-
+    private int cnt = 0;
 
     public AudioSource good; 
     public AudioSource bad; 
     public AudioSource allBad;
+    public AudioSource win; 
+    public AudioSource lose;
     public GameObject L1N; 
     public GameObject L1R; 
 
@@ -110,6 +112,7 @@ public class RotationController : MonoBehaviour
             good.Play();
         }
         else{
+            cnt += 1;
             bad.Play();
         }
     }
@@ -119,6 +122,7 @@ public class RotationController : MonoBehaviour
             good.Play();
         }
         else{
+            cnt += 1;
             bad.Play();
         }
     }
@@ -128,8 +132,15 @@ public class RotationController : MonoBehaviour
             good.Play();
         }
         else{
+            cnt += 1;
             bad.Play();
         }
-        SceneManager.LoadScene(2);
+        if(cnt < 2){
+            win.Play();
+        }
+        else{
+            lose.Play();
+        }
+        //SceneManager.LoadScene(2);
     }
 }
