@@ -141,6 +141,6 @@ public class RotationController : MonoBehaviour
         else{
             lose.Play();
         }
-        //SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2);
     }
 }
